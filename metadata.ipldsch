@@ -1,0 +1,23 @@
+type IndexClaimMetadata struct {
+  index Link (rename "i")
+  expiration Int (rename "e")
+  claim Link (rename "c")
+}
+
+type EqualsClaimMetadata struct {
+  equals Link (rename "=")
+  expiration Int (rename "e")
+  claim Link (rename "c")
+}
+
+type Range struct {
+	offset Int
+	length nullable Int
+} representation tuple
+
+type LocationCommitmentMetadata struct {
+  shard nullable Link (rename "s")
+  range nullable Range (rename "r") 
+  expiration Int (rename "e")
+  claim Link (rename "c")
+}
