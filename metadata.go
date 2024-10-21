@@ -177,7 +177,7 @@ type LocationCommitmentMetadata struct {
 }
 
 func (l *LocationCommitmentMetadata) ID() multicodec.Code {
-	return EqualsClaimID
+	return LocationCommitmentID
 }
 func (l *LocationCommitmentMetadata) MarshalBinary() ([]byte, error) { return marshalBinary(l) }
 func (l *LocationCommitmentMetadata) UnmarshalBinary(data []byte) error {
