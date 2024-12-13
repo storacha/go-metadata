@@ -160,8 +160,8 @@ func (e *EqualsClaimMetadata) GetClaim() cid.Cid {
 }
 
 type Range struct {
-	Offset uint64
-	Length *uint64
+	Offset int64
+	Length *int64
 }
 
 // LocationCommitmentMetadata represents metadata for an equals claim
