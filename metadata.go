@@ -198,7 +198,7 @@ type hasID[T any] interface {
 func marshalBinary(metadata ipnimd.Protocol) ([]byte, error) {
 	buf := bytes.NewBuffer(varint.ToUvarint(uint64(metadata.ID())))
 	nd := bindnode.Wrap(metadata, nodePrototypes[metadata.ID()].Type())
-	if err := dagcbor.Encode(nd, buf); err != nil {
+	if err := dagcbor.Encode(nd.Representation(), buf); err != nil {
 		return nil, err
 	}
 	return buf.Bytes(), nil
@@ -221,7 +221,7 @@ func readFrom[PT hasID[T], T any](val PT, r io.Reader) (int64, error) {
 		return cr.readCount, fmt.Errorf("transport id does not match %s: %s", val.ID(), id)
 	}
 
-	nb := nodePrototypes[val.ID()].NewBuilder()
+	nb := nodePrototypes[val.ID()].Representation().NewBuilder()
 	err = dagcbor.Decode(nb, cr)
 	if err != nil {
 		return cr.readCount, err
