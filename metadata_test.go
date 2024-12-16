@@ -36,7 +36,7 @@ func TestRoundTripLocationCommitmentMetadata(t *testing.T) {
 
 	t.Run("optional shard", func(t *testing.T) {
 		claim := testutil.RandomCID(t).(cidlink.Link).Cid
-		var length uint64 = 138
+		length := uint64(138)
 		rng := Range{
 			Offset: 10,
 			Length: &length,
