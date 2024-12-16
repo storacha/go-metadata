@@ -11,9 +11,9 @@ type EqualsClaimMetadata struct {
 }
 
 type Range struct {
-	offset Int (rename "o")
-	length optional Int (rename "l")
-}
+	offset Int
+	length optional Int
+} representation tuple
 
 type LocationCommitmentMetadata struct {
   shard optional Link (rename "s")
